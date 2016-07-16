@@ -5,20 +5,17 @@ import time
 
 def checkConnected():
 	try:
-		response = urllib2.urlopen("http://172.16.255.195/", timeout = 1)
+		response = urllib2.urlopen("http://192.168.0.18/", timeout = 1)
 		return json.load(response)
 	except urllib2.URLError as e:
 		print e.reason
 
 def clickAction():
-	os.system("./autoClicker -x 750 -y 400")
-	os.system("./autoClicker -x 750 -y 450")
-	time.sleep(1)
-	print "clicking!!"
+	os.system("./autoClicker -x1 457 -y1 442 -x2 463 -y2 489")
 
 def start():
-	while True:
-		if checkConnected() != None:
-			clickAction()
+	print "Press 'SHIFT' to start AutoClick\nPress 'CONTROL' to pause AutoClick"
+	if checkConnected() != None:
+		clickAction()
 
 start()
