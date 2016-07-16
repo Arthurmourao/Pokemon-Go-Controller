@@ -13,6 +13,7 @@ import GCDWebServer
 class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var ipaddressLabel: UILabel!
     var currentLocation:CLLocationCoordinate2D!
     var webServer:GCDWebServer = GCDWebServer()
     enum Direction {
@@ -108,6 +109,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             return GCDWebServerDataResponse.init(JSONObject: self.getCurrentLocationDict())
         })
         webServer.startWithPort(80, bonjourName: "pokemonController")
+        ipaddressLabel.text = webServer.serverURL.absoluteString
     }
     
     override func didReceiveMemoryWarning() {
