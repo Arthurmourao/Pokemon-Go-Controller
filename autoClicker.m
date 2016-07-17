@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 
         timer = CFRunLoopTimerCreate(NULL, CFAbsoluteTimeGetCurrent(), 1.5, 0, 0, fireClick, &timer_context);
         CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, kCFRunLoopCommonModes);
-
+        CFRelease(timer);
         CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
 
